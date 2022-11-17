@@ -19,7 +19,7 @@ public class SolutionFormatterImpl implements SolutionFormatter {
             }
         }
 
-        System.out.println("\n Formatted solution : "+charArrayFormatted.toString()+" \n");
+        //solution : String.format(Locale.FRENCH, "%,d", solution); //CHECK THE DAMN EXISTING FUNCTIONS
         return charArrayFormatted.toString(); 
     }
 
