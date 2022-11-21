@@ -3,6 +3,7 @@ package com.openclassrooms.testing.calcul.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class SolutionFormatterTest {
@@ -15,6 +16,7 @@ public class SolutionFormatterTest {
 	}
 
 	@Test
+	@Disabled
 	public void format_shouldFormatAnyBigNumber() {
 		// GIVEN
 		final int number = 1234567890;

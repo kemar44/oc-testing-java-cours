@@ -3,7 +3,6 @@ package com.openclassrooms.testing.calcul.domain;
 import static java.lang.Math.PI;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.withinPercentage;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -48,7 +47,8 @@ public class ConversionCalculatorTest {
 	@DisplayName("Soit un volume de 10 gallons, en litres, on obtient 37.8541 litres.")
 	public void gallonsToLitres_returnsEquivalentLitres() {
 		final Double actualLitres = calculatorUnderTest.gallonsToLitres(10.);
-		assertEquals(37.8541, actualLitres);
+		// assertEquals(37.8541, actualLitres); // NOT precise enough for testing
+		assertThat(actualLitres).isCloseTo(37.8541, withinPercentage(0.01));
 	}
 
 	@Test

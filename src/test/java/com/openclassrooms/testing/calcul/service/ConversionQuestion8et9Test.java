@@ -10,7 +10,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -18,6 +20,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.openclassrooms.testing.calcul.domain.model.ConversionModel;
+import com.openclassrooms.testing.calcul.domain.model.ConversionType;
 
 @ExtendWith(MockitoExtension.class)
 public class ConversionQuestion8et9Test {
@@ -42,7 +45,12 @@ public class ConversionQuestion8et9Test {
 		batchConversionService.batchConvert(operations);
 
 		// THEN
-		// ...
+		verify(conversionService,times(2)).calculate(conversionModelCaptor.capture());
+		List<ConversionModel> conversionModels = conversionModelCaptor.getAllValues();
+		assertThat(conversionModels)
+			.extracting(ConversionModel::getArgument,ConversionModel::getConversionType)
+			.containsExactly(Tuple.tuple(32.,ConversionType.FARENHEIT_TO_CELSIUS),
+							Tuple.tuple(10., ConversionType.GALLON_TO_LITRE));
 
 	}
 

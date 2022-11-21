@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer.Alphanumeric;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -38,6 +39,7 @@ public class ConversionQuestion6et7Test {
 	}
 
 	@Test
+	@Disabled
 	public void calculate_shouldUseCalculator_forCelsius0ToFarenheit32() {
 		// GIVEN
 		final double resultatAttendu = 32.;
@@ -61,7 +63,7 @@ public class ConversionQuestion6et7Test {
 
 		// WHEN
 		resultat = conversionCalculatorService.calculate(
-				new ConversionModel(resultat, ConversionType.FARENHEIT_TO_CELSIUS)).getSolution();
+				new ConversionModel(32., ConversionType.FARENHEIT_TO_CELSIUS)).getSolution();
 
 		// THEN
 		verify(calculator).fahrenheitToCelsius(32.0);
